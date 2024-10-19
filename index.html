@@ -1,104 +1,497 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>后期服务工作室</title>
-    <link href="https://fonts.googleapis.com/css2?family=Helvetica:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>ArtEdit Studio Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Helvetica', sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+            background: linear-gradient(135deg, #1c1c1e, #3c3f41);
+            color: #e0e0e0;
         }
+
         header {
-            background: #000;
-            color: #fff;
-            padding: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        header p {
+            font-size: 1.6rem;
+            font-weight: 300;
+            margin-top: 10px;
+        }
+
+        nav {
+            background: rgba(44, 47, 51, 0.8);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.3rem;
+            transition: color 0.3s, transform 0.3s, box-shadow 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0px 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        nav a.active {
+            border: 2px solid #ffffff;
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
             text-align: center;
         }
-        .content {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
+
+        .container h2 {
+            font-size: 3rem;
+            margin-bottom: 50px;
+            font-weight: 500;
+            letter-spacing: 1px;
         }
-        h1, h2, h3 {
-            color: #000;
-        }
+
         .services {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 40px;
+            gap: 40px;
+            justify-content: center;
         }
+
         .service {
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            flex: 1;
-            min-width: 250px;
+            background: linear-gradient(135deg, #2a2a2e, #3e3e42);
+            border-radius: 20px;
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.7);
+            width: calc(30% - 40px);
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
+
+        .service:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 25px 50px rgba(0, 0, 0, 0.75);
+        }
+
+        .service h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+        }
+
+        .service p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
         .contact-info {
-            margin-top: 40px;
+            margin-top: 80px;
             text-align: center;
+            background: linear-gradient(135deg, #3e3e42, #2a2a2e);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.7);
         }
+
+        .contact-info p {
+            font-size: 1.4rem;
+            font-weight: 300;
+            line-height: 2;
+        }
+
+        .about {
+            margin-top: 80px;
+            padding: 40px;
+            background: linear-gradient(135deg, #3e3e42, #2a2a2e);
+            border-radius: 20px;
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        .about h2 {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .about p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            line-height: 2;
+            color: #dcdcdc;
+        }
+
         footer {
-            background: #000;
-            color: #fff;
-            padding: 10px;
+            background: linear-gradient(135deg, #1a1a1d, #2b2d30);
+            color: white;
             text-align: center;
-            margin-top: 40px;
+            padding: 30px;
+            margin-top: 100px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            font-size: 1.2rem;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .testimonials {
+            margin-top: 100px;
+            padding: 50px;
+            background: linear-gradient(135deg, #1c1c1e, #292b2e);
+            border-radius: 20px;
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        .testimonial {
+            margin-bottom: 50px;
+        }
+
+        .testimonial p {
+            font-size: 1.4rem;
+            font-weight: 300;
+            line-height: 2;
+            font-style: italic;
+        }
+
+        .testimonial h4 {
+            font-size: 2rem;
+            font-weight: 500;
+            margin-top: 20px;
+        }
+
+        /* Adjust anchor scrolling behavior */
+        :target::before {
+            content: "";
+            display: block;
+            height: 100px;
+            margin-top: -100px;
+            visibility: hidden;
+        }
+
+        .gallery {
+            margin-top: 100px;
+            padding: 50px;
+            background: linear-gradient(135deg, #2c2c2e, #4a4d51);
+            border-radius: 20px;
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        .gallery h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .gallery-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .gallery-images img {
+            width: calc(25% - 20px);
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-images img:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .cta-section {
+            margin-top: 100px;
+            padding: 60px;
+            background: linear-gradient(135deg, #1e2a3a, #33495b);
+            border-radius: 20px;
+            text-align: center;
+            color: #ffffff;
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        .cta-section h2 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .cta-section button {
+            padding: 15px 30px;
+            font-size: 1.3rem;
+            font-weight: 500;
+            background-color: #f04e31;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-section button:hover {
+            background-color: #d94327;
+            transform: scale(1.05);
+        }
+
+        .faq {
+            margin-top: 100px;
+            padding: 50px;
+            background: linear-gradient(135deg, #2d2f33, #44484e);
+            border-radius: 20px;
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        .faq h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .faq-item {
+            margin-bottom: 30px;
+        }
+
+        .faq-item h3 {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .faq-item h3:hover {
+            color: #ffffff;
+        }
+
+        .faq-item p {
+            font-size: 1.3rem;
+            font-weight: 300;
+            line-height: 2;
+            display: none;
+        }
+
+        .faq-item.open p {
+            display: block;
+        }
+
+        .team {
+            margin-top: 100px;
+            padding: 50px;
+            background: linear-gradient(135deg, #1e1e1f, #343639);
+            border-radius: 20px;
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        .team h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .team-member {
+            width: calc(33% - 40px);
+            text-align: center;
+            background: linear-gradient(135deg, #2e2e30, #474a4f);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .team-member h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            font-size: 1.2rem;
+            font-weight: 300;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>后期服务工作室</h1>
-        <p>高质量、专业的影视后期制作服务</p>
+        <h1>ArtEdit Studio</h1>
+        <p>提供高质量的后期制作服务，满足您视频剪辑的所有需求</p>
     </header>
-    <div class="content">
-        <section class="introduction">
-            <p>欢迎来到我们的后期服务工作室，我们致力于提供高质量、专业的影视后期制作服务。无论是视频剪辑、色彩调校，还是特效处理，我们都以最专业的态度为每一位客户打造出色的视觉体验。</p>
-        </section>
-        <section class="services">
+    
+    <nav>
+        <a href="#" class="active">主页</a>
+        <a href="#services">服务</a>
+        <a href="#contact">联系我们</a>
+        <a href="#about">关于我们</a>
+        <a href="#gallery">作品集</a>
+        <a href="#faq">常见问题</a>
+        <a href="#team">团队</a>
+    </nav>
+
+    <div class="container" id="services">
+        <h2>我们的服务</h2>
+        <div class="services">
             <div class="service">
                 <h3>视频剪辑</h3>
-                <p>将零散的素材剪辑为完整的故事，精准把握节奏与情感，让您的作品更具吸引力。</p>
+                <p>专业的视频剪辑服务，帮助您呈现最好的内容。</p>
             </div>
             <div class="service">
-                <h3>色彩调校</h3>
-                <p>通过专业的调色技术，使画面色彩更加生动、协调，帮助您实现所期望的视觉风格。</p>
+                <h3>婚礼剪辑</h3>
+                <p>捕捉您婚礼的美好瞬间，让回忆永恒。</p>
             </div>
             <div class="service">
-                <h3>音效处理</h3>
-                <p>优化音效，增强音质，让您的作品在声音上也达到最佳表现。</p>
+                <h3>活动剪辑</h3>
+                <p>记录各种活动的精彩片段，呈现最难忘的时刻。</p>
             </div>
             <div class="service">
-                <h3>特效制作</h3>
-                <p>加入创意特效，为您的视频增加更多亮点，带来令人惊艳的视觉冲击。</p>
+                <h3>短视频剪辑</h3>
+                <p>制作高质量的短视频，助您获得更多的流量和关注。</p>
             </div>
-        </section>
-        <section class="advantages">
-            <h2>我们的优势</h2>
-            <ul>
-                <li><strong>专业团队：</strong>我们拥有多年的后期制作经验，精通各种后期工具和技术。</li>
-                <li><strong>客户至上：</strong>我们始终以客户的需求为导向，根据项目要求提供量身定制的解决方案。</li>
-                <li><strong>高效交付：</strong>保证高效率和高质量的交付时间，让您的项目如期完成。</li>
-            </ul>
-        </section>
-        <section class="contact-info">
-            <h2>联系我们</h2>
-            <p>如果您有任何后期制作的需求，欢迎与我们联系！</p>
-            <p>微信：HYZQSYS</p>
-            <p>电话：80390923</p>
-        </section>
+            <div class="service">
+                <h3>调色校正</h3>
+                <p>通过精细的调色让您的视频呈现出完美的视觉效果。</p>
+            </div>
+        </div>
     </div>
+
+    <div class="contact-info" id="contact">
+        <h2>联系我们</h2>
+        <p>电话: 8039 0923</p>
+        <p>微信: HYZQSYS</p>
+        <p>电子邮件: info@arteditstudio.com</p>
+    </div>
+
+    <div class="about" id="about">
+        <h2>关于我们</h2>
+        <p>ArtEdit Studio 是一家致力于提供高质量视频后期制作服务的公司。我们的团队由经验丰富的专业人士组成，专注于视频剪辑、调色校正和各种活动视频的制作。无论您是需要个人的婚礼视频，还是商业活动的精彩呈现，我们都能为您提供最佳的解决方案。</p>
+    </div>
+
+    <div class="gallery" id="gallery">
+        <h2>作品集</h2>
+        <div class="gallery-images">
+            <img src="https://via.placeholder.com/300x200" alt="Gallery Image 1">
+            <img src="https://via.placeholder.com/300x200" alt="Gallery Image 2">
+            <img src="https://via.placeholder.com/300x200" alt="Gallery Image 3">
+            <img src="https://via.placeholder.com/300x200" alt="Gallery Image 4">
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2>立即联系我们，开始您的创意之旅</h2>
+        <p>无论是婚礼、活动还是商业视频，我们都能帮助您实现创意梦想。</p>
+        <button>联系我们</button>
+    </div>
+
+    <div class="faq" id="faq">
+        <h2>常见问题</h2>
+        <div class="faq-item">
+            <h3>你们的服务价格如何？</h3>
+            <p>我们的价格根据项目的复杂性和具体要求而定。请联系我们获取详细报价。</p>
+        </div>
+        <div class="faq-item">
+            <h3>项目完成需要多长时间？</h3>
+            <p>项目的完成时间取决于项目的复杂程度。通常，我们会在1到2周内交付剪辑好的视频。</p>
+        </div>
+        <div class="faq-item">
+            <h3>你们提供哪些支付方式？</h3>
+            <p>我们接受多种支付方式，包括银行转账、信用卡支付和微信支付。</p>
+        </div>
+    </div>
+
+    <div class="team" id="team">
+        <h2>我们的团队</h2>
+        <div class="team-members">
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Team Member 1">
+                <h3>张伟</h3>
+                <p>首席剪辑师，拥有10年以上视频制作经验。</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Team Member 2">
+                <h3>李丽</h3>
+                <p>高级调色师，专注于色彩校正和视频美化。</p>
+            </div>
+            <div class="team-member">
+                <img src="https://via.placeholder.com/100" alt="Team Member 3">
+                <h3>王强</h3>
+                <p>特效设计师，擅长为视频加入震撼的视觉效果。</p>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>期待与您合作，为您的作品赋予更精彩的生命力！</p>
+        <p>联系电话: 8039 0923<br>微信: HYZQSYS<br>© 2024 ArtEdit Studio. 保留所有权利.</p>
     </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item h3').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                parent.classList.toggle('open');
+            });
+        });
+    </script>
 </body>
 </html>
